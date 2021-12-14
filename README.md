@@ -67,6 +67,6 @@ spacing(korean_text)
 ```
 
 ## Credits
-This package is a revamped and customized version of two different sources:
+This package is a revamped and customized version of the following two sources:
 * KoTokenizer: https://pypi.org/project/hangul-korean/
 * KoSpacing: https://github.com/haven-jeon/PyKoSpacing
