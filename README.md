@@ -19,10 +19,11 @@ as the smallest syntactic unit.
 
 ## How to install
 Before using this package please make sure you have the following dependencies installed in your system.
-* **Python >=3.8**
-* **pandas>=1.3.4**
-* **tensorflow>=2.7.0**
-* **h5py>=3.6.0**
+* **Python >= 3.7**
+* **numpy >= 1.21.4**
+* **pandas >= 1.3.4**
+* **tensorflow >= 2.7.0**
+* **h5py >= 3.6.0**
 
 Use the following command to install the package:
 ```python
@@ -34,7 +35,7 @@ pip install pykotokenizer
 ### Using KoTokenizer
 
 ```python
-from pykotokenizer.ko_tokenizer import KoTokenizer
+from pykotokenizer import KoTokenizer
 
 tokenizer = KoTokenizer()
 
@@ -51,7 +52,7 @@ tokenizer(korean_text)
 ### Using KoSpacing
 
 ```python
-from pykotokenizer.ko_spacing import KoSpacing
+from pykotokenizer import KoSpacing
 
 spacing = KoSpacing()
 
