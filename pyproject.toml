@@ -5,6 +5,7 @@ requires = [
     "numpy>=1.19.0",
     "pandas>=1.1.5",
     "tensorflow>=2.6.2",
-    "h5py>=3.1.0"
+    "h5py>=3.1.0",
+    "konlpy>=0.5.2"
 ]
 build-backend = "setuptools.build_meta"

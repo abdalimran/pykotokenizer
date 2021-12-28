@@ -1,12 +1,12 @@
 from datetime import datetime
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from pandas import read_csv
 import pkg_resources
 import json
 import sys
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 class KoTokenizer:
@@ -16,10 +16,8 @@ class KoTokenizer:
     tag2idx['充'] = 2
 
     def __init__(self):
-        modelFile = pkg_resources.resource_filename(
-            'pykotokenizer', os.path.join('resources', 'ko_tokenizer', 'models', 'model_th7.hdf5'))
-        word2idxFile = pkg_resources.resource_filename(
-            'pykotokenizer', os.path.join('resources', 'ko_tokenizer', 'data', 'word2idx0.json'))
+        modelFile = pkg_resources.resource_filename('pykotokenizer', os.path.join('resources', 'ko_tokenizer', 'models', 'model_th7.hdf5'))
+        word2idxFile = pkg_resources.resource_filename('pykotokenizer', os.path.join('resources', 'ko_tokenizer', 'data', 'word2idx0.json'))
         self._model = load_model(modelFile)
         self._layer = self._model.get_layer(index=0)
         self._max_len = self._layer.output_shape[1]

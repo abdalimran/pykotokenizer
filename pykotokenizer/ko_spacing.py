@@ -4,9 +4,9 @@ import csv
 import json
 import numpy as np
 import pkg_resources
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import sequence
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 class KoSpacing:
@@ -108,4 +108,4 @@ class KoSpacing:
             spaced_sent = self.get_spaced_sent(sent)
         if len(self.rules) > 0:
             spaced_sent = self.apply_rules(spaced_sent)
-        return spaced_sent.strip()
+        return spaced_sent.strip(' \n\t')

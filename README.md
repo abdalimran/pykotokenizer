@@ -1,5 +1,5 @@
 # PyKoTokenizer
-PyKoTokenizer is a deep learning (RNN) model-based word tokenizer for Korean language.
+PyKoTokenizer is a Korean text tokenizer for Korean Natural Language Processing tasks. It includes deep learning (RNN) model-based word tokenizers as well as morphological analyzer based word tokenizers for Korean language.
 
 ## Segmentation of Korean Words
 Written Korean texts do employ white space characters. However, more often than not,
@@ -24,6 +24,7 @@ Before using this package please make sure you have the following dependencies i
 * **pandas >= 1.1.5**
 * **tensorflow >= 2.6.2**
 * **h5py >= 3.1.0**
+* **konlpy >= 0.5.2**
 
 Use the following command to install the package:
 ```python
@@ -31,6 +32,9 @@ pip install pykotokenizer
 ```
 
 ## How to Use
+
+## Model-based Tokenizers
+Below, we show examples of using model-based tokenizers.
 
 ### Using KoTokenizer
 
@@ -66,7 +70,46 @@ spacing(korean_text)
 "김형호 영화시장 분석가는 '1987'의 네이버 영화 정보 네티즌 10점 평에서 언급된 단어들을 지난해 12월 27일부터 올해 1월 10일까지 통계 프로그램 R과 KoNLP 패키지로 텍스트마이닝하여 분석했다."
 ```
 
+## Morphological analyzer based Tokenizers
+
+Below, we show examples of using morphological analyzer based tokenizers. These tokenizers has ***dependency*** on **[KoNLPy](https://konlpy.org/en/latest/)**. So, please install KoNLPy before using these. To install KoNLPy please visit this link - [https://konlpy.org/en/latest/install/](https://konlpy.org/en/latest/install/) and follow the procedure. KoNLPy requires Java in your system.
+
+### Using KoKkma
+
+```python
+from pykotokenizer import KoKkma
+
+kokkma = KoKkma()
+
+korean_text = "김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다."
+
+kokkma(korean_text)
+```
+
+**Output:**
+```
+"김 형 호 영화 시장 분석가 는 ' 1987 ' 의 네이버 영화 정보 네티즌 10 점 평 에서 언급 되 ㄴ 단어 들 을 지난해 12 월 27 일 부터 올해 1 월 10 일 까지 통계 프로그램 R 과 KoNLP 패키지 로 텍스트 마이닝 하 여 분석 하 었 다 ."
+```
+
+### Using KoKomoran
+
+```python
+from pykotokenizer import KoKomoran
+
+kokomoran = KoKomoran()
+
+korean_text = "김형호영화시장분석가는'1987'의네이버영화정보네티즌10점평에서언급된단어들을지난해12월27일부터올해1월10일까지통계프로그램R과KoNLP패키지로텍스트마이닝하여분석했다."
+
+kokomoran(korean_text)
+```
+
+**Output:**
+```
+"김형호 영화 시장 분석가 는 ' 1987 ' 의 네이버 영화 정보 네티즌 10 점 평 에서 언급 되 ㄴ 단어 들 을 지난해 12월 27 일 부터 올해 1월 10 일 까지 통계 프로그램 R 과 KoNLP 패키지 로 텍스트 마 이닝 하 아 분석 하 았 다 ."
+```
+
 ## Credits
 This package is a revamped and customized version of the following two sources:
 * KoTokenizer: https://pypi.org/project/hangul-korean/
 * KoSpacing: https://github.com/haven-jeon/PyKoSpacing
+* KoNLPy: https://konlpy.org/en/latest/
